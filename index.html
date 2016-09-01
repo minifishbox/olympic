@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 
-    <title>IT教育网2015课程学习情况</title>
+    <title>olymic</title>
 
     <!-- 载入所有的组件资源 -->
     <script type="text/javascript" src="js/lib/jquery.js"></script>
@@ -26,6 +26,7 @@
         body{
             margin: 0;
             padding: 0;
+
         }
         /*所有页 添加背景图*/
         .h5_page{
@@ -136,8 +137,8 @@
             h5
             .addPage('face')//首页
                 .addComponent('slogan',{
-                    width:310,
-                    height:310,
+                    width:300,
+                    height:300,
                     bg:'imgs/olympic_logo.png',
                     center:true,
                     css:{opacity:0,bottom:-310},
@@ -146,8 +147,8 @@
                     delay:500
                 })
                     .addComponent('face1_left',{
-                        width:300,
-                        height:300,
+                        width:200,
+                        height:200,
                         bg:'imgs/face1_left.png',
                         css:{opacity:0,left:-50,bottom:-50},
                         animateIn:{opacity:1,left:20,bottom:60},
@@ -155,11 +156,11 @@
                         delay:1000
                     })
                     .addComponent('face_img_right',{
-                        width:470,
-                        height:470,
+                        width:370,
+                        height:370,
                         bg:'imgs/face1_right.png',
                         css:{opacity:0,right:-50,bottom:-50},
-                        animateIn:{opacity:1,right:0,bottom:30},
+                        animateIn:{opacity:1,right:20,bottom:60},
                         animateOut:{opacity:0,right:-50,bottom:-50},
                         delay:1000
                     })
@@ -169,13 +170,12 @@
                         width:500,
                         height:30,
                         center:true,
-                        text:'奥林匹克运动会——和平与友谊的象征',
+                        text:'奥运会——和平与友谊的象征',
                         css:{
                             opacity:0,
                             textAlign:'center',
                             color:'black',
                             fontSize:'26px',
-                            top:240
                         },
                         animateIn:{
                             opacity:1,
@@ -203,7 +203,7 @@
                         text:'奥运会从1896年开始每4年举办一次，历史上只有三届由于战争的原因没有举行。奥林匹克精神强调竞技运动的公平与公正，它为“更快、更高、更强”的奥林匹克精神起到了“保驾护航”的作用，它让世界上不同肤色、国家的运动员信服地站在奥运五环旗下。',
                         animateIn:{
                             opacity:1,
-                            bottom:380
+                            top:220
                         },
                         animateOut:{
                             opacity:0,
@@ -251,7 +251,8 @@
                                 ],
                                 css : {
                                     top:80,
-                                    opacity:0
+                                    opacity:0,
+                                    right:10
                                 },
                                 animateIn:{
                                     opacity:1,
@@ -261,18 +262,8 @@
                                     opacity:0,
                                     top:80,
                                 },
-                                center : true,
                             }
                     )
-                    .addComponent('msg',{
-                        text:'美国',
-                        css:{
-                            opacity:0,bottom:120,
-                            textAlign:'center',width:'100%',color:'#ff7676'
-                        },
-                        animateIn:{ opacity:1},
-                        animateOut:{ opacity:0}
-                    })
 
                     .addPage() //垂直柱图
                     .addComponent('caption',{text:'各国奖牌金牌榜'})
@@ -305,16 +296,6 @@
                                 center : true
                             }
                     )
-                    .addComponent('msg',{
-                        text:'前端课程 Javascript 占到40%',
-                        css:{
-                            opacity:0,top:180,
-                            textAlign:'center',width:'100%',color:'#ff7676'
-                        },
-                        animateIn:{ opacity:1},
-                        animateOut:{ opacity:0}
-                    })
-
                     .addPage()//散点图
                     .addComponent('caption',{text:'中国队奖牌总榜'})//point
                     .addComponent('point',{
@@ -401,7 +382,20 @@
                          $.fn.fullpage.moveTo( 1 )
                     }
                 })
-            .loader( [ 'imgs/tail_back.png','imgs/tail_share.png','imgs/tail_slogan.png' ] );
+            .loader( [
+                'imgs/cap.png',
+                'imgs/tail_back.png',
+                'imgs/tail_share.png',
+                'imgs/last_page_slogan.png' ,
+                'imgs/p1_people.png',
+                'imgs/description_bg.gif',
+                'imgs/face1_right.png',
+                'imgs/face1_left.png',
+                'imgs/olympic_logo.png',
+                'imgs/footer_new.png',
+                'imgs/page_bg.png',
+                'imgs/rio.png',
+                'imgs/last_page_bg.png'] );
 
         });
     </script>

@@ -10,7 +10,7 @@ var H5ComponentBar =function ( name, cfg ) {
     var rate = $('<div class="rate">');
     var per = $('<div class="per">');
 
-    var width = item[1]/item_rg*85 + '%';
+    var width = item[1]/item_rg*75 + '%';
 
     var  bgStyle = '';
     if( item[2] ){
