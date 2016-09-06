@@ -15,48 +15,94 @@
     <!-- H5对象：进行内容管理 -->
 
     <script type="text/javascript" src="js/H5.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/H5.css" >
+    <link rel="stylesheet" type="text/css" href="css/H5.css">
 
     <script type="text/javascript" src="js/H5_loading.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/H5_loading.css" >
+    <link rel="stylesheet" type="text/css" href="css/H5_loading.css">
+    <script>
+        var h = window.innerHeight;
+        var w = window.innerWidth;
+        $(window).load(function () {
+            if ((h / w) > (1136 / 640)) {
+                $('.h5').css('width', '100vw').css('height', ((1136 / 640) * 100) + 'vw');
+//                var bg_h=$('.h5_page').height,bg_w=$('.h5_page').width;
+//
+//             $('.slogan').css('width', '').css('height', ((1136 / 640) * 100) + 'vw');
+            }
+            else {
+                $('.h5').css('height', '100vh').css('width', ((640 / 1136) * 100) + 'vh');
+            }
+        });
+        $(window).resize(function () {
+            if ((h / w) > (1136 / 640)) {
+                $('.h5').css('width', '100vw').css('height', ((1136 / 640) * 100) + 'vw');
 
-     <!--页面逻辑的样式 -->
+            } else {
+                $('.h5').css('height', '100vh').css('width', ((640 / 1136) * 100) + 'vh');
+            }
+        })
+    </script>
+    <!--页面逻辑的样式 -->
     <style type="text/css">
 
-        body{
+        body {
             margin: 0;
             padding: 0;
 
         }
+
         /*所有页 添加背景图*/
-        .h5_page{
+        .h5_page {
             background-image: url(imgs/page_bg.png);
+
         }
 
         /*添首页背景*/
-        .h5_page_face{
+        .h5_page_face {
             background-image: url(imgs/rio.png);
         }
-        .h5_page_tail{
+
+        .h5_page_tail {
             background-image: url(imgs/last_page_bg.png);
         }
+
         /*首页与尾页slogan的抖动动画*/
-        .h5_component_name_slogan{
-             -webkit-animation:rock 2s infinite 2s;
+        .h5_component_name_slogan {
+            -webkit-animation: rock 2s infinite 2s;
         }
-        @-webkit-keyframes rock{
-            0%{ transform:rotate(0deg)}
-            5%{ transform:rotate(3deg)}
-            10%{ transform:rotate(-4deg)}
-            15%{ transform:rotate(3deg)}
-            20%{ transform:rotate(-2deg)}
-            25%{ transform:rotate(1deg)}
-            30%{ transform:rotate(-1deg)}
-            70%{ transform:rotate(0deg)}
-            100%{ transform:rotate(0deg)}
+
+        @-webkit-keyframes rock {
+            0% {
+                transform: rotate(0deg)
+            }
+            5% {
+                transform: rotate(3deg)
+            }
+            10% {
+                transform: rotate(-4deg)
+            }
+            15% {
+                transform: rotate(3deg)
+            }
+            20% {
+                transform: rotate(-2deg)
+            }
+            25% {
+                transform: rotate(1deg)
+            }
+            30% {
+                transform: rotate(-1deg)
+            }
+            70% {
+                transform: rotate(0deg)
+            }
+            100% {
+                transform: rotate(0deg)
+            }
         }
+
         /*添加公共的头部样式*/
-        .h5_component_name_caption{
+        .h5_component_name_caption {
             background-image: url(imgs/cap.png);
             width: 283px;
             height: 160px;
@@ -65,341 +111,347 @@
             font-size: 20px;
             color: #fff;
         }
+
         /*尾页回到顶部特效*/
-        .h5_component_name_back{
+        .h5_component_name_back {
             top: 30px;
-             -webkit-animation:back 2s infinite 2s;
+            -webkit-animation: back 2s infinite 2s;
         }
 
-        @-webkit-keyframes back{
-            50%{ top: 20px; }/*0%与100%默认top:30px*/
+        @-webkit-keyframes back {
+            50% {
+                top: 20px;
+            }
+            /*0%与100%默认top:30px*/
         }
     </style>
 </head>
-    
-    <body>
 
-    <div class="loading">
+<body>
 
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
+<div class="loading">
 
-        <div id="rate">0%</div>
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
 
-    </div>
+    <div id="rate">0%</div>
+
+</div>
 
 
+<!-- 加载 H5组件 相关资源 -->
+<script type="text/javascript">
+    if (document.documentElement.clientWidth > 600) {
 
-    <!-- 加载 H5组件 相关资源 -->
-    <script type="text/javascript">
+    }
 
-        var res = [
-            'Base','Bar','Bar_v','Point','Polyline',
-            'Radar','Pie','Ring'
-            ];
-        var html = [];
-        for(var s in res){
-            html.push('<script type="text/javascript" src="js/H5Component'+res[s]+'.js"><\/script>');//引入所有js组建引用
-            html.push('<link rel="stylesheet" type="text/css" href="css/H5Component'+res[s]+'.css">');
+    var res = [
+        'Base', 'Bar', 'Bar_v', 'Point', 'Polyline',
+        'Radar', 'Pie', 'Ring'
+    ];
+    var html = [];
+    for (var s in res) {
+        html.push('<script type="text/javascript" src="js/H5Component' + res[s] + '.js"><\/script>');//引入所有js组建引用
+        html.push('<link rel="stylesheet" type="text/css" href="css/H5Component' + res[s] + '.css">');
 
+    }
+    document.write(html.join(''));//一定要以空的字符串为间隔不然会以逗号交易
+</script>
+
+<!-- 主要逻辑 -->
+<script type="text/javascript">
+
+    $(function () {
+
+        var h5 = new H5();
+        //底部页脚
+        h5.whenAddPage = function () {
+            this.addComponent('slide_up', {
+                bg: 'imgs/footer_new.png',
+                css: {
+                    opacity: 0,
+                    left: 0,
+                    bottom: -20,
+                    width: '100%',
+                    height: '20px',
+                    zIndex: 999
+                },
+                animateIn: {
+                    opacity: 1, bottom: 0
+                },
+                animateOut: {
+                    opacity: 0, bottom: -20
+                },
+                delay: 500
+            });
         }
-        document.write( html.join('') );//一定要以空的字符串为间隔不然会以逗号交易
-    </script>
-
-    <!-- 主要逻辑 -->
-    <script type="text/javascript">
-
-        $(function  () {
-
-            var h5 = new H5();
-            //底部页脚
-            h5.whenAddPage = function(){
-                this.addComponent('slide_up',{
-                    bg:'imgs/footer_new.png',
-                    css:{
-                        opacity:0,
-                        left:0,
-                        bottom:-20,
-                        width:'100%',
-                        height:'20px',
-                        zIndex:999
-                    },
-                    animateIn:{
-                        opacity:1,bottom:0
-                    },
-                    animateOut:{
-                        opacity:0,bottom:-20
-                    },
-                    delay:500
-                });
-            }
-            //组件页开发
-            h5
-            .addPage('face')//首页
-                .addComponent('slogan',{
-                    width:300,
-                    height:300,
-                    bg:'imgs/olympic_logo.png',
-                    center:true,
-                    css:{opacity:0,bottom:-310},
-                    animateIn:{opacity:1,top:80},
-                    animateOut:{opacity:0,bottom:-310},
-                    delay:500
+        //组件页开发
+        h5
+                .addPage('face')//首页
+                .addComponent('slogan', {
+                    width: 300,
+                    height: 300,
+                    bg: 'imgs/olympic_logo.png',
+                    center: true,
+                    css: {opacity: 0, bottom: -310},
+                    animateIn: {opacity: 1, top: 60},
+                    animateOut: {opacity: 0, bottom: -310},
+                    delay: 500
                 })
-                    .addComponent('face1_left',{
-                        width:200,
-                        height:200,
-                        bg:'imgs/face1_left.png',
-                        css:{opacity:0,left:-50,bottom:-50},
-                        animateIn:{opacity:1,left:20,bottom:60},
-                        animateOut:{opacity:0,left:-50,bottom:-50},
-                        delay:1000
-                    })
-                    .addComponent('face_img_right',{
-                        width:370,
-                        height:370,
-                        bg:'imgs/face1_right.png',
-                        css:{opacity:0,right:-50,bottom:-50},
-                        animateIn:{opacity:1,right:20,bottom:60},
-                        animateOut:{opacity:0,right:-50,bottom:-50},
-                        delay:1000
-                    })
-                    .addPage()      //第二页
-                    .addComponent('caption',{text:'奥运精神'})
-                    .addComponent('text',{
-                        width:500,
-                        height:30,
-                        center:true,
-                        text:'奥运会——和平与友谊的象征',
-                        css:{
-                            opacity:0,
-                            textAlign:'center',
-                            color:'black',
-                            fontSize:'26px',
-                        },
-                        animateIn:{
-                            opacity:1,
-                            top:120
-                        },
-                        animateOut:{
-                            opacity:0,
-                            top:240
-                        },
-                    })
-                    .addComponent('description',{
-                        center:true,
-                        width:481,
-                        height:295,
-                        bg:'imgs/description_bg.gif',
-                        css:{
-                            opacity:0,
-                            padding:'10px 10px ',
-                            color:'#fff',
-                            fontSize:'15px',
-                            lineHeight:'15px',
-                            textAlign:'justify',//两端对齐
-                            top:240
-                        },
-                        text:'奥运会从1896年开始每4年举办一次，历史上只有三届由于战争的原因没有举行。奥林匹克精神强调竞技运动的公平与公正，它为“更快、更高、更强”的奥林匹克精神起到了“保驾护航”的作用，它让世界上不同肤色、国家的运动员信服地站在奥运五环旗下。',
-                        animateIn:{
-                            opacity:1,
-                            top:220
-                        },
-                        animateOut:{
-                            opacity:0,
-                            top:240
-                        },
-                        delay:1000
-                    })
-                    .addComponent('people',{
-                        center:true,
-                        width:515,
-                        height:305,
-                        bg:'imgs/p1_people.png',
-                        css:{
-                            opacity:0,
-                            bottom:0
-                        },
-                        animateIn:{
-                            opacity:1,
-                            bottom:40
-                        },
-                        animateOut:{
-                            opacity:0,
-                            bottom:0
-                        },
-                        delay:500
-                    })
+                .addComponent('face1_left', {
+                    width: 200,
+                    height: 200,
+                    bg: 'imgs/face1_left.png',
+                    css: {opacity: 0, left: -50, bottom: -50},
+                    animateIn: {opacity: 1, left: 10, bottom: 40},
+                    animateOut: {opacity: 0, left: -50, bottom: -50},
+                    delay: 1000
+                })
+                .addComponent('face_img_right', {
+                    width: 300,
+                    height: 300,
+                    bg: 'imgs/face1_right.png',
+                    css: {opacity: 0, right: -50, bottom: -50},
+                    animateIn: {opacity: 1, right: 10, bottom: 60},
+                    animateOut: {opacity: 0, right: -50, bottom: -50},
+                    delay: 1000
+                })
+                .addPage()      //第二页
+                .addComponent('caption', {text: '奥运精神'})
+                .addComponent('text', {
+                    width: 500,
+                    height: 30,
+                    center: true,
+                    text: '奥运会—和平与友谊的象征',
+                    css: {
+                        opacity: 0,
+                        textAlign: 'center',
+                        color: 'black',
+                        fontSize: '24px',
+                    },
+                    animateIn: {
+                        opacity: 1,
+                        top: 120
+                    },
+                    animateOut: {
+                        opacity: 0,
+                        top: 240
+                    },
+                })
+                .addComponent('description', {
+                    center: true,
+                    width: 481,
+                    height: 295,
+                    bg: 'imgs/description_bg.gif',
+                    css: {
+                        opacity: 0,
+                        padding: '10px 10px ',
+                        color: '#fff',
+                        fontSize: '15px',
+                        lineHeight: '15px',
+                        textAlign: 'justify',//两端对齐
+                        top: 240
+                    },
+                    text: '奥运会从1896年开始每4年举办一次，历史上只有三届由于战争的原因没有举行。奥林匹克精神强调竞技运动的公平与公正，它为“更快、更高、更强”的奥林匹克精神起到了“保驾护航”的作用，它让世界上不同肤色、国家的运动员信服地站在奥运五环旗下。',
+                    animateIn: {
+                        opacity: 1,
+                        top: 200
+                    },
+                    animateOut: {
+                        opacity: 0,
+                        top: 240
+                    },
+                    delay: 1000
+                })
+                .addComponent('people', {
+                    center: true,
+                    width: 515,
+                    height: 305,
+                    bg: 'imgs/p1_people.png',
+                    css: {
+                        opacity: 0,
+                        bottom: 0
+                    },
+                    animateIn: {
+                        opacity: 1,
+                        bottom: 20
+                    },
+                    animateOut: {
+                        opacity: 0,
+                        bottom: 0
+                    },
+                    delay: 500
+                })
 
-                    .addPage() //水平柱图
-                    .addComponent('caption',{text:'各国奖牌总榜'})
-                    .addComponent('bar',
-                            {
-                                type : 'bar',
-                                width : 530,
-                                height : 600,
-                                data:[
-                                    ['美国' , 121  ,'#ff7676'],
-                                    ['中国 ' , 70  ,'#003366'],
-                                    ['英国' , 67,'#0066CC' ],
-                                    ['俄罗斯' , 56 ,'#99CC00' ],
-                                    ['德国' , 42 ,'#FF0033'],
-                                    ['法国' , 42 ,'#663366'],
-                                    ['日本' , 41 ,'#333300'],
-                                    ['澳大利亚', 29 ,'#993333'],
-                                    ['意大利', 28 ,'#FFFF00']
-                                ],
-                                css : {
-                                    top:80,
-                                    opacity:0,
-                                    right:10
-                                },
-                                animateIn:{
-                                    opacity:1,
-                                    top:140,
-                                },
-                                animateOut:{
-                                    opacity:0,
-                                    top:80,
-                                },
-                            }
-                    )
+                .addPage() //水平柱图
+                .addComponent('caption', {text: '各国奖牌总榜'})
+                .addComponent('bar',
+                        {
+                            type: 'bar',
+                            width: 530,
+                            height: 600,
+                            data: [
+                                ['美国', 121, '#ff7676'],
+                                ['中国 ', 70, '#003366'],
+                                ['英国', 67, '#0066CC'],
+                                ['俄罗斯', 56, '#99CC00'],
+                                ['德国', 42, '#FF0033'],
+                                ['法国', 42, '#663366'],
+                                ['日本', 41, '#333300'],
+                                ['澳大利亚', 29, '#993333'],
+                                ['意大利', 28, '#FFFF00']
+                            ],
+                            css: {
+                                top: 80,
+                                opacity: 0,
+                            },
+                            animateIn: {
+                                opacity: 1,
+                                top: 140,
+                               left:60
+                            },
+                            animateOut: {
+                                opacity: 0,
+                                top: 80,
+                            },
+                        }
+                )
 
-                    .addPage() //垂直柱图
-                    .addComponent('caption',{text:'各国奖牌金牌榜'})
-                    .addComponent('bar_v',
-                            {
-                                type : 'bar_v',
-                                width : 530,
-                                height : 400,
-                                data:[
-                                    ['美国' , 46  ,'#FFCCCC'],
-                                    ['英国' , 27 ,'#CCFF99'],
-                                    ['中国' , 26 ,'#99CCFF' ],
-                                    ['俄罗斯' , 19 ,'#FFCC99'],
-                                    ['德国' , 17 ,'#CCFFFF'],
-                                    ['日本' , 12 ,'#CC99CC' ],
-                                    ['法国' , 10 ,'#FF6666'],
-                                ],
-                                css : {
-                                    top:220,
-                                    opacity:0
-                                },
-                                animateIn:{
-                                    opacity:1,
-                                    bottom:40
-                                },
-                                animateOut:{
-                                    opacity:0,
-                                    top:220,
-                                },
-                                center : true
-                            }
-                    )
-                    .addPage()//散点图
-                    .addComponent('caption',{text:'中国队奖牌总榜'})//point
-                    .addComponent('point',{
-                        type : 'point',
-                        width : 300,
-                        height : 300,
-                        data:[
-                            ['金牌' , 26  ,'#FFFF00'],
-                            ['银牌' , 18  ,'#999999', '-30%' ,'-70%'],
-                            ['乒乓球' , 26  ,'#FF9900', '50%' ,'-120%']
-                        ],
-                        css : {
-                            bottom:'20%'
-                        },
-                        center : true,
-                    })
-            .addPage()//雷达图
-                .addComponent('caption',{text:'中国队得金项目分布'})//radar
-
-                .addComponent('radar',{
-                    type : 'radar',
-                    width : 400,
-                    height : 400,
-                    data:[
-                        ['跳水' , .7  ,'#0066CC'],
-                        ['举重' , .5 ,'#FF6666'],
-                        ['排球/游泳/射击/场地自行车' , .1 ,'#996699'],
-                        ['田径/羽毛球/跆拳道' , .2  ],
-                        ['乒乓球' , .4 ,'#FFFF00' ],
+                .addPage() //垂直柱图
+                .addComponent('caption', {text: '各国奖牌金牌榜'})
+                .addComponent('bar_v',
+                        {
+                            type: 'bar_v',
+                            width: 530,
+                            height: 400,
+                            data: [
+                                ['美国', 46, '#FFCCCC'],
+                                ['英国', 27, '#CCFF99'],
+                                ['中国', 26, '#99CCFF'],
+                                ['俄罗斯', 19, '#FFCC99'],
+                                ['德国', 17, '#CCFFFF'],
+                                ['日本', 12, '#CC99CC'],
+                                ['法国', 10, '#FF6666'],
+                            ],
+                            css: {
+                                top: 220,
+                                opacity: 0
+                            },
+                            animateIn: {
+                                opacity: 1,
+                                bottom: 40
+                            },
+                            animateOut: {
+                                opacity: 0,
+                                top: 220,
+                            },
+                            center: true
+                        }
+                )
+                .addPage()//散点图
+                .addComponent('caption', {text: '中国队奖牌总榜'})//point
+                .addComponent('point', {
+                    type: 'point',
+                    width: 300,
+                    height: 300,
+                    data: [
+                        ['金牌', 26, '#FFFF00'],
+                        ['银牌', 18, '#999999', '-30%', '-70%'],
+                        ['乒乓球', 26, '#FF9900', '50%', '-120%']
                     ],
-                    css : {
-                        top:100,
-                        opacity:0
+                    css: {
+                        bottom: '20%'
                     },
-                    animateIn:{
-                        opacity:1,
-                        top:200,
+                    center: true,
+                })
+                .addPage()//雷达图
+                .addComponent('caption', {text: '中国队得金项目分布'})//radar
+
+                .addComponent('radar', {
+                    type: 'radar',
+                    width: 400,
+                    height: 400,
+                    data: [
+                        ['跳水', .7, '#0066CC'],
+                        ['举重', .5, '#FF6666'],
+                        ['排球/游泳/射击/场地自行车', .1, '#996699'],
+                        ['田径/羽毛球/跆拳道', .2],
+                        ['乒乓球', .4, '#FFFF00'],
+                    ],
+                    css: {
+                        top: 100,
+                        opacity: 0
                     },
-                    animateOut:{
-                        opacity:0,
-                        top:100,
+                    animateIn: {
+                        opacity: 1,
+                        top: 200,
                     },
-                    center : true,
+                    animateOut: {
+                        opacity: 0,
+                        top: 100,
+                    },
+                    center: true,
                 })
 
-            .addPage('tail') //结束页
-                .addComponent('slogan',{
-                    center:true,
-                    width:236,
-                    height:238,
-                    bg:'imgs/last_page_slogan.png',
-                    css:{top:120,opacity:0},
-                    animateIn:{opacity:1,left:'50%'},
-                    animateOut:{opacity:0,left:'0%'},
-                    delay:500
+                .addPage('tail') //结束页
+                .addComponent('slogan', {
+                    center: true,
+                    width: 236,
+                    height: 238,
+                    bg: 'imgs/last_page_slogan.png',
+                    css: {top: 120, opacity: 0},
+                    animateIn: {opacity: 1, left: '50%'},
+                    animateOut: {opacity: 0, left: '0%'},
+                    delay: 500
                 })
-                .addComponent('share',{
-                    width:128,
-                    height:120,
-                    bg:'imgs/tail_share.png',
-                    css:{
-                        opacity:0,
-                        top:110,
-                        right:110
+                .addComponent('share', {
+                    width: 128,
+                    height: 120,
+                    bg: 'imgs/tail_share.png',
+                    css: {
+                        opacity: 0,
+                        top: 110,
+                        right: 110
                     },
-                    animateIn:{
-                        opacity:1,
-                        top:10,
-                        right:10
+                    animateIn: {
+                        opacity: 1,
+                        top: 10,
+                        right: 10
                     },
-                    animateOut:{
-                        opacity:0,
-                        top:110,
-                        right:110
+                    animateOut: {
+                        opacity: 0,
+                        top: 110,
+                        right: 110
                     },
-                    delay:1000
+                    delay: 1000
                 })
-                .addComponent('back',{
-                    width:52,
-                    height:50,
-                    bg:'imgs/tail_back.png',
-                    center:true,
-                    onclick : function(){
-                         $.fn.fullpage.moveTo( 1 )
+                .addComponent('back', {
+                    width: 52,
+                    height: 50,
+                    bg: 'imgs/tail_back.png',
+                    center: true,
+                    onclick: function () {
+                        $.fn.fullpage.moveTo(1)
                     }
                 })
-            .loader( [
-                'imgs/cap.png',
-                'imgs/tail_back.png',
-                'imgs/tail_share.png',
-                'imgs/last_page_slogan.png' ,
-                'imgs/p1_people.png',
-                'imgs/description_bg.gif',
-                'imgs/face1_right.png',
-                'imgs/face1_left.png',
-                'imgs/olympic_logo.png',
-                'imgs/footer_new.png',
-                'imgs/page_bg.png',
-                'imgs/rio.png',
-                'imgs/last_page_bg.png'] );
+                .loader([
+                    'imgs/cap.png',
+                    'imgs/tail_back.png',
+                    'imgs/tail_share.png',
+                    'imgs/last_page_slogan.png',
+                    'imgs/p1_people.png',
+                    'imgs/description_bg.gif',
+                    'imgs/face1_right.png',
+                    'imgs/face1_left.png',
+                    'imgs/olympic_logo.png',
+                    'imgs/footer_new.png',
+                    'imgs/page_bg.png',
+                    'imgs/rio.png',
+                    'imgs/last_page_bg.png']);
 
-        });
-    </script>
+    });
+</script>
 
-    </body>
+</body>
 
 </html>
