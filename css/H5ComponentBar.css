@@ -37,7 +37,7 @@
 .h5_component_bar .per{
     width: 20px;
     color: #99c0ff;
-    margin-left: 2px;
+    margin-left: 5px;
     float: left;
     /*position: absolute;!*避免js变量width变成100%时布局乱套现象*!*/
     /*left: -60px;*/

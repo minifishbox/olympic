@@ -32,6 +32,10 @@
             else {
                 $('.h5').css('height', '100vh').css('width', ((640 / 1136) * 100) + 'vh');
             }
+            var bg_h=parseInt( $('.h5').css( 'height')),bg_w=parseInt( $('.h5').css('width'));
+            $('.h5_component_name_slogan')[0].css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+            $('.h5_component_name_face_img_left').css('width', 0.2*bg_h+'px').css('height',0.2*bg_h+'px');
+            $('.h5_component_name_face_img_right').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
         });
         $(window).resize(function () {
             if ((h / w) > (1136 / 640)) {
@@ -40,6 +44,15 @@
             } else {
                 $('.h5').css('height', '100vh').css('width', ((640 / 1136) * 100) + 'vh');
             }
+            var bg_h=parseInt( $('.h5').css( 'height')),bg_w=parseInt( $('.h5').css('width'));
+            $('.h5_component_name_slogan')[0].css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+            $('.h5_component_name_face_img_left').css('width', 0.2*bg_h+'px').css('height',0.2*bg_h+'px');
+            $('.h5_component_name_face_img_right').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+            $('.h5_component_name_description').css('width', 0.4*bg_h+'px').css('height',0.4*bg_h+'px');
+            $('.h5_component_name_people').css('width', 0.5*bg_h+'px').css('height',0.4*bg_h+'px');
+
+
+
         })
     </script>
     <!--页面逻辑的样式 -->
@@ -208,8 +221,8 @@
                     delay: 1000
                 })
                 .addComponent('face_img_right', {
-                    width: 300,
-                    height: 300,
+                    width: 330,
+                    height: 330,
                     bg: 'imgs/face1_right.png',
                     css: {opacity: 0, right: -50, bottom: -50},
                     animateIn: {opacity: 1, right: 10, bottom: 60},
@@ -227,7 +240,7 @@
                         opacity: 0,
                         textAlign: 'center',
                         color: 'black',
-                        fontSize: '24px',
+                        fontSize: '20px',
                     },
                     animateIn: {
                         opacity: 1,
@@ -245,17 +258,17 @@
                     bg: 'imgs/description_bg.gif',
                     css: {
                         opacity: 0,
-                        padding: '10px 10px ',
+                        padding: '15px 10px 10px 10px',
                         color: '#fff',
                         fontSize: '15px',
-                        lineHeight: '15px',
+                        lineHeight: '18px',
                         textAlign: 'justify',//两端对齐
                         top: 240
                     },
-                    text: '奥运会从1896年开始每4年举办一次，历史上只有三届由于战争的原因没有举行。奥林匹克精神强调竞技运动的公平与公正，它为“更快、更高、更强”的奥林匹克精神起到了“保驾护航”的作用，它让世界上不同肤色、国家的运动员信服地站在奥运五环旗下。',
+                    text: '奥运会每4年举办一次，只有三届由于战争没有举行。奥林匹克强调竞技运动的公平与公正，它为“更快、更高、更强”的奥林匹克精神起到了“保驾护航”的作用，它让世界上不同肤色、国家的运动员信服地站在奥运五环旗下。',
                     animateIn: {
                         opacity: 1,
-                        top: 200
+                        top: 190
                     },
                     animateOut: {
                         opacity: 0,
