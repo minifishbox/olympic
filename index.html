@@ -2,14 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-
+   <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1,user-scalable=no">  <!--布局视口成为理想视口，禁用用户缩放-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge"><!-- 强制使用当前ie版本的最高渲染模式-->
     <title>olymic</title>
 
     <!-- 载入所有的组件资源 -->
-    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/lib/jquery.fullPage.js"></script>
+    <script src="//cdn.bootcss.com/fullPage.js/2.8.6/vendors/jquery.easings.min.js"></script>
+    <script src="//cdn.bootcss.com/fullPage.js/2.8.6/jquery.fullPage.js"></script>
 
 
     <!-- H5对象：进行内容管理 -->
@@ -20,9 +21,10 @@
     <script type="text/javascript" src="js/H5_loading.js"></script>
     <link rel="stylesheet" type="text/css" href="css/H5_loading.css">
     <script>
-        var h = window.innerHeight;
-        var w = window.innerWidth;
+
         $(window).load(function () {
+            var h = window.innerHeight;
+            var w = window.innerWidth;
             if ((h / w) > (1136 / 640)) {
                 $('.h5').css('width', '100vw').css('height', ((1136 / 640) * 100) + 'vw');
 //                var bg_h=$('.h5_page').height,bg_w=$('.h5_page').width;
@@ -33,11 +35,13 @@
                 $('.h5').css('height', '100vh').css('width', ((640 / 1136) * 100) + 'vh');
             }
             var bg_h=parseInt( $('.h5').css( 'height')),bg_w=parseInt( $('.h5').css('width'));
-            $('.h5_component_name_slogan')[0].css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
-            $('.h5_component_name_face_img_left').css('width', 0.2*bg_h+'px').css('height',0.2*bg_h+'px');
-            $('.h5_component_name_face_img_right').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+            $('.h5_component_name_slogan').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+//            $('.h5_component_name_face_img_left').css('width', 0.2*bg_h+'px').css('height',0.2*bg_h+'px');
+//            $('.h5_component_name_face_img_right').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
         });
         $(window).resize(function () {
+            var h = window.innerHeight;
+            var w = window.innerWidth;
             if ((h / w) > (1136 / 640)) {
                 $('.h5').css('width', '100vw').css('height', ((1136 / 640) * 100) + 'vw');
 
@@ -45,14 +49,12 @@
                 $('.h5').css('height', '100vh').css('width', ((640 / 1136) * 100) + 'vh');
             }
             var bg_h=parseInt( $('.h5').css( 'height')),bg_w=parseInt( $('.h5').css('width'));
-            $('.h5_component_name_slogan')[0].css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
-            $('.h5_component_name_face_img_left').css('width', 0.2*bg_h+'px').css('height',0.2*bg_h+'px');
-            $('.h5_component_name_face_img_right').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
-            $('.h5_component_name_description').css('width', 0.4*bg_h+'px').css('height',0.4*bg_h+'px');
-            $('.h5_component_name_people').css('width', 0.5*bg_h+'px').css('height',0.4*bg_h+'px');
-
-
-
+            $('.h5_component_name_slogan').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+//            $('.h5_component_name_face_img_left').css('width', 0.2*bg_h+'px').css('height',0.2*bg_h+'px');
+//            $('.h5_component_name_face_img_right').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+//            $('.h5_component_name_description').css('width', 0.6*bg_w+'px').css('height',0.6*bg_w+'px');
+//            $('.h5_component_name_people').css('width', 0.5*bg_h+'px').css('height',0.4*bg_h+'px');
+            console.log('h'+h+'w'+w);
         })
     </script>
     <!--页面逻辑的样式 -->
@@ -80,7 +82,7 @@
         }
 
         /*首页与尾页slogan的抖动动画*/
-        .h5_component_name_slogan {
+        .h5_component_name_slogan,.h5_component_name_slogan_2{
             -webkit-animation: rock 2s infinite 2s;
         }
 
@@ -178,57 +180,57 @@
 
         var h5 = new H5();
         //底部页脚
-        h5.whenAddPage = function () {
-            this.addComponent('slide_up', {
-                bg: 'imgs/footer_new.png',
-                css: {
-                    opacity: 0,
-                    left: 0,
-                    bottom: -20,
-                    width: '100%',
-                    height: '20px',
-                    zIndex: 999
-                },
-                animateIn: {
-                    opacity: 1, bottom: 0
-                },
-                animateOut: {
-                    opacity: 0, bottom: -20
-                },
-                delay: 500
-            });
-        }
+//        h5.whenAddPage = function () {
+//            this.addComponent('slide_up', {
+//                bg: 'imgs/footer_new.png',
+//                css: {
+//                    opacity: 0,
+//                    left: 0,
+//                    bottom: -20,
+//                    width: '100%',
+//                    height: '20px',
+//                    zIndex: 999
+//                },
+//                animateIn: {
+//                    opacity: 1, bottom: 0
+//                },
+//                animateOut: {
+//                    opacity: 0, bottom: -20
+//                },
+//                delay: 500
+//            });
+//        }
         //组件页开发
         h5
                 .addPage('face')//首页
-                .addComponent('slogan', {
-                    width: 300,
-                    height: 300,
-                    bg: 'imgs/olympic_logo.png',
-                    center: true,
-                    css: {opacity: 0, bottom: -310},
-                    animateIn: {opacity: 1, top: 60},
-                    animateOut: {opacity: 0, bottom: -310},
-                    delay: 500
-                })
-                .addComponent('face1_left', {
-                    width: 200,
-                    height: 200,
-                    bg: 'imgs/face1_left.png',
-                    css: {opacity: 0, left: -50, bottom: -50},
-                    animateIn: {opacity: 1, left: 10, bottom: 40},
-                    animateOut: {opacity: 0, left: -50, bottom: -50},
-                    delay: 1000
-                })
-                .addComponent('face_img_right', {
-                    width: 330,
-                    height: 330,
-                    bg: 'imgs/face1_right.png',
-                    css: {opacity: 0, right: -50, bottom: -50},
-                    animateIn: {opacity: 1, right: 10, bottom: 60},
-                    animateOut: {opacity: 0, right: -50, bottom: -50},
-                    delay: 1000
-                })
+//                .addComponent('slogan', {
+//                    width: 300,
+//                    height: 300,
+//                    bg: 'imgs/olympic_logo.png',
+//                    center: true,
+//                    css: {opacity: 0, bottom: -310},
+//                    animateIn: {opacity: 1, top: 60},
+//                    animateOut: {opacity: 0, bottom: -310},
+//                    delay: 500
+//                })
+//                .addComponent('face1_left', {
+//                    width: 200,
+//                    height: 200,
+//                    bg: 'imgs/face1_left.png',
+//                    css: {opacity: 0, left: -50, bottom: -50},
+//                    animateIn: {opacity: 1, left: 10, bottom: 40},
+//                    animateOut: {opacity: 0, left: -50, bottom: -50},
+//                    delay: 1000
+//                })
+//                .addComponent('face_img_right', {
+//                    width: 330,
+//                    height: 330,
+//                    bg: 'imgs/face1_right.png',
+//                    css: {opacity: 0, right: -50, bottom: -50},
+//                    animateIn: {opacity: 1, right: 10, bottom: 60},
+//                    animateOut: {opacity: 0, right: -50, bottom: -50},
+//                    delay: 1000
+//                })
                 .addPage()      //第二页
                 .addComponent('caption', {text: '奥运精神'})
                 .addComponent('text', {
@@ -407,7 +409,7 @@
                 })
 
                 .addPage('tail') //结束页
-                .addComponent('slogan', {
+                .addComponent('slogan_2', {
                     center: true,
                     width: 236,
                     height: 238,
