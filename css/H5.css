@@ -18,12 +18,12 @@ html {
 .h5{
     height: 125vw;
     width: 100vw;
-    margin: 0 auto;
 }
 .h5_page{
     position: relative;
     height: 100%;
     width: 100%;
+    margin: 0 auto;
     background-color: #ddd;
     background-size: 100%;
     background-repeat: no-repeat;
