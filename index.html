@@ -7,10 +7,9 @@
     <title>olymic</title>
 
     <!-- 载入所有的组件资源 -->
-    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
     <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
-    <script src="//cdn.bootcss.com/fullPage.js/2.8.6/vendors/jquery.easings.min.js"></script>
-    <script src="//cdn.bootcss.com/fullPage.js/2.8.6/jquery.fullPage.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.fullPage.js"></script>
 
 
     <!-- H5对象：进行内容管理 -->
@@ -31,11 +30,13 @@
                 $('.h5_page').css('height', '100vh').css('width', ((640 / 1136) * 100) + 'vh');
             }
             var bg_h=parseInt( $('.h5_page').css( 'height')),bg_w=parseInt( $('.h5_page').css('width'));
-            $('.h5_component_name_slogan').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
-            $('.h5_component_name_face_img_left').css('width', 0.2*bg_h+'px').css('height',0.2*bg_h+'px');
-            $('.h5_component_name_face_img_right').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
-////            $('.h5_component_name_description').css('width', 0.6*bg_w+'px').css('height',0.6*bg_w+'px');
-//            $('.h5_component_name_people').css('width', 0.5*bg_h+'px').css('height',0.4*bg_h+'px');
+//                    ,slide_h=parseInt( $('.h5_component_name_slide_up').css('height'));
+//            $('.h5_component_name_slide_up').css('bottom',0);
+            $('.h5_component_name_slogan').css('width', 0.5*bg_w+'px').css('height',0.5*bg_w+'px').css('marginLeft',.25*bg_w+'px').css('top',.1*bg_h+'px');
+            $('.h5_component_name_face_img_left').css('width', 0.4*bg_w+'px').css('height',0.4*bg_w+'px').css('left',.05*bg_w+'px');
+            $('.h5_component_name_face_img_right').css('width', 0.5*bg_w+'px').css('height',0.5*bg_w+'px').css('right',.05*bg_w+'px');
+            $('.h5_component_name_description').css('width', 0.3*bg_h+'px').css('height',0.3*bg_h+'px');
+            $('.h5_component_name_people').css('width', 0.8*bg_w+'px').css('marginLeft',.1*bg_w+'px');
         };
         $(window).load(adjustLayout);
         $(window).resize(adjustLayout);
@@ -169,16 +170,16 @@
                 css: {
                     opacity: 0,
                     left: 0,
-                    bottom: -20,
+                    bottom: -40,
                     width: '100%',
                     height: '20px',
                     zIndex: 999
                 },
                 animateIn: {
-                    opacity: 1, bottom: 0
+                    opacity: 1,
                 },
                 animateOut: {
-                    opacity: 0, bottom: -20
+                    opacity: 0, bottom: -40
                 },
                 delay: 500
             });
@@ -190,18 +191,18 @@
                     width: 300,
                     height: 300,
                     bg: 'imgs/olympic_logo.png',
-                    center: true,
+//                    center: true,
                     css: {opacity: 0, bottom: -310},
-                    animateIn: {opacity: 1, top: 60},
+                    animateIn: {opacity: 1, },
                     animateOut: {opacity: 0, bottom: -310},
                     delay: 500
                 })
-                .addComponent('face1_left', {
+                .addComponent('face_img_left', {
                     width: 200,
                     height: 200,
                     bg: 'imgs/face1_left.png',
                     css: {opacity: 0, left: -50, bottom: -50},
-                    animateIn: {opacity: 1, left: 10, bottom: 40},
+                    animateIn: {opacity: 1, },
                     animateOut: {opacity: 0, left: -50, bottom: -50},
                     delay: 1000
                 })
@@ -210,7 +211,7 @@
                     height: 330,
                     bg: 'imgs/face1_right.png',
                     css: {opacity: 0, right: -50, bottom: -50},
-                    animateIn: {opacity: 1, right: 10, bottom: 60},
+                    animateIn: {opacity: 1, },
                     animateOut: {opacity: 0, right: -50, bottom: -50},
                     delay: 1000
                 })
@@ -229,7 +230,7 @@
                     },
                     animateIn: {
                         opacity: 1,
-                        top: 120
+//                        top: 120
                     },
                     animateOut: {
                         opacity: 0,
@@ -237,10 +238,9 @@
                     },
                 })
                 .addComponent('description', {
-                    center: true,
+//                    center: true,
                     width: 481,
                     height: 295,
-                    bg: 'imgs/description_bg.gif',
                     css: {
                         opacity: 0,
                         padding: '15px 10px 10px 10px',
@@ -253,7 +253,7 @@
                     text: '奥运会每4年举办一次，只有三届由于战争没有举行。奥林匹克强调竞技运动的公平与公正，它为“更快、更高、更强”的奥林匹克精神起到了“保驾护航”的作用，它让世界上不同肤色、国家的运动员信服地站在奥运五环旗下。',
                     animateIn: {
                         opacity: 1,
-                        top: 190
+//                        top: 190
                     },
                     animateOut: {
                         opacity: 0,
@@ -262,7 +262,7 @@
                     delay: 1000
                 })
                 .addComponent('people', {
-                    center: true,
+//                    center: true,
                     width: 515,
                     height: 305,
                     bg: 'imgs/p1_people.png',
