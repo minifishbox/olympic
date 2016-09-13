@@ -1,7 +1,7 @@
 /* H5对象的全局样式 */
 html {
     /* iPhone6的375px尺寸作为16px基准，600px正好18px大小 */
-    font-size: calc(100% + 2 * (100vw - 375px) / 225);
+    font-size: 15px;
 }
 @media screen and (min-width: 600px) {
     html {
@@ -15,6 +15,7 @@ html {
         font-size: calc(137.5% + 5 * (100vw - 1000px) / 1000);
     }
 }
+
 .h5{
     height: 125vw;
     width: 100vw;
